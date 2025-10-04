@@ -1,35 +1,55 @@
 
 # Introduction #
-Simulation de fourmis avec intelligence artificielle (NEAT). 
-Projet réalisé en 2e année d'école d'ingénieur à Polytech Dijon. 
-Étudiants: Yohann Turpin et Lauric Géhu. 
+This project is a simulation of an ant colony using **artificial intelligence with the NEAT algorithm (NeuroEvolution of Augmenting Topologies)**.  
+It was developed as a 2nd-year engineering school project at **Polytech Dijon** by:  
+- **Yohann Turpin**  
+- **Lauric Géhu**
+- 
+The simulation allows agents (ants) to evolve over time to improve their behavior and decision-making.  
+👉 A playable **release** is available where ants can find their way through a maze.
 
-# Compilation
-Plusieurs étapes sont nécessaire afin de compiler le projet. 
-Tout d'abord, il est nécessaire de télécharger [Raylib](https://github.com/raysan5/raylib/releases/tag/5.0) et [Raygui](https://github.com/raysan5/raygui/releases/tag/4.0). 
-Ensuite, extraire Raygui et Raylib à la racine de l'ordinateur de préférence (C:\). 
-Puis glisser le fichier `raygui.h` dans le dossier `C:\raylib\raylib\src`.
+# Compilation Instructions
+Several steps are required to compile the project.
+### 1. Install Dependencies
+- Download **[Raylib 5.0](https://github.com/raysan5/raylib/releases/tag/5.0)**  
+- Download **[Raygui 4.0](https://github.com/raysan5/raygui/releases/tag/4.0)**  
+- Extract both at the root of your system drive, preferably at `C:\`.  
+
+Move the file `raygui.h` into:  `C:\raylib\raylib\src`
+
 Par la suite, il faut modifier des macros dans le fichier `C:\raylib\raylib\src\config.h`.
 Les deux macros suivantes doivent être mis en commentaire: 
-```
+
+
+### 2. Configure Raylib
+In the file `C:\raylib\raylib\src\config.h`, edit the macros as follows:
+
+- Comment out:
+```c
 #define SUPPORT_PARTIALBUSY_WAIT_LOOP 
 #define SUPPORT_BUSY_WAIT_LOOP  
 ```
-Et celle-ci décommenté: 
+- Uncomment:
 ```
 #define SUPPORT_CUSTOM_FRAME_CONTROL 
 ```
-A présent on peut compiler raylib en entrant dans le terminal  
-à partir du dossier src: 
+
+3. Compile Raylib
+
+From the src folder of Raylib, run:
 ```bash
 MAKE
 ```
 
-Pour travailler avec VSCode, il reste à créer une configuration pour compiler et executer le projet. 
-Il suffit d'aller dans le répertoire     
+4. Configure VSCode
+
+To compile and run the project with Visual Studio Code:
+
+1. Go to:  
 `C:\raylib\raylib\projects\VSCode\`  
-et copier le dossier `.vscode` afin de le coller à la racine du projet. 
-Enfin, dans le fichier task.json, modifier les valeurs de la clé "args" pour avoir la configuration ci-dessous:
+2. Copy the `.vscode` folder into the root of your project.
+3. Edit `tasks.json` and update the "args" section as follows:
+
 ```json
 "args": [
             "RAYLIB_PATH=C:/raylib/raylib",
@@ -38,3 +58,18 @@ Enfin, dans le fichier task.json, modifier les valeurs de la clé "args" pour av
             "BUILD_MODE=DEBUG"
           ]
 ```
+
+# Running the Simulation
+
+Once compiled, launch the executable.
+
+Ants will be simulated in their environment.
+
+With each generation, behaviors evolve using NEAT.
+
+In the latest release, ants are able to navigate and find their way through a maze.
+
+#  References
+
+- [Raylib Documentation](https://www.raylib.com/)  
+- [NEAT Algorithm (Stanley & Miikkulainen, 2002)](http://nn.cs.utexas.edu/downloads/papers/stanley.ec02.pdf)
